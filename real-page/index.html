@@ -115,31 +115,33 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous" async></script>
 
     <script>
-      const app = {
-        carouselWrapper: $('#landingCarousel'),
+      window.addEventListener("load",() => {
+        const app = {
+          carouselWrapper: $('#landingCarousel'),
 
-        getActiveItemData() {
-          const activeItem = this.carouselWrapper
-            .find('.carousel-item.active')
-          return activeItem.data()
-        },
+          getActiveItemData() {
+            const activeItem = this.carouselWrapper
+              .find('.carousel-item.active')
+            return activeItem.data()
+          },
 
-        setActiveName() {
-          const carouselInfoName = $('.carousel-info h2')
-          const carouselInfoDescription = $('.carousel-info p')
-          const { name, description } = this.getActiveItemData()
-          
-          carouselInfoName.text(name)
-          carouselInfoDescription.text(description)
-        },
+          setActiveName() {
+            const carouselInfoName = $('.carousel-info h2')
+            const carouselInfoDescription = $('.carousel-info p')
+            const { name, description } = this.getActiveItemData()
 
-        init() {
-          this.carouselWrapper.on('slid.bs.carousel', () => this.setActiveName())
+            carouselInfoName.text(name)
+            carouselInfoDescription.text(description)
+          },
 
-          this.setActiveName()
+          init() {
+            this.carouselWrapper.on('slid.bs.carousel', () => this.setActiveName())
+
+            this.setActiveName()
+          }
         }
-      }
-
+      })
+      
       app.init()
     </script>
   </body>
